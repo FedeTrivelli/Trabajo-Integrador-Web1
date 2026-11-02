@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+:root {
+    --blanco: #faf5f7;
+    --azulOscuro: #0f172a;
+    --azul: #2563eb;
+    --Gris: #e2e8f0;
+    --rosa: #f472b6;
+    --fuente: 'Ubuntu', sans-serif;
+}
+ *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--fuente);
+ }
+
+ a{
+    text-decoration: none;
+    color: var(--blanco);
+ }
+
+ img{
+    max-width: 100%;
+    display: block;
+ }
+ body{
+    font-family: var(--fuente);
+    background-color: var(--Gris);
+    color: var(--azulOscuro);
+ }
+ .encabezado{
+    background-color: var(--azulOscuro);
+    color: var(--blanco);
+ }
+ .encabezado_interno{
+    background-color: var(--azulOscuro);
+    color: var(--blanco);
+    padding:  0 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+ }
+.logo{
+    font-size: 33px;
+    color: var(--blanco);
+    font-weight: 700;
+}
+
+.menu{
+    display: flex;
+    list-style: none;
+    gap: 10px;
+}
+.menu a{
+    display: block;
+    padding: 10px 15px;
+    color: var(--blanco);
+    text-decoration: none;
+    border-bottom: 3px solid transparent;
+}
+.menu a:hover{
+    border-bottom: 3px solid var(--azul);
+}
+.menu a[aria-current="page"]{
+    background-color: var(--blanco);
+    color: var(--azulOscuro);
+    font-weight: 700;
+    border-color: var(--azul);
+}
