@@ -84,7 +84,7 @@ function mostrarResumen(datos) {
     item.className = "resumen__item";
 
     const etiqueta = document.createElement("strong");
-    etiqueta.textContent = `${campo.etiqueta}: `;
+    etiqueta.textContent = `${campo.label}: `;
 
     const valor = document.createElement("span");
     valor.textContent = datos[campo.id];
