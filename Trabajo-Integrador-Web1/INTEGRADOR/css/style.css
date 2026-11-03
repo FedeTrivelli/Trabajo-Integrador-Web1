@@ -163,6 +163,14 @@ footer{
   text-align: center;
   padding: 1rem;
 }
+.pie-interno{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 2rem;
+  max-width: 1900px;
+  margin: 0 auto;
+}
 /*Para celulares*/
 @media screen and (max-width: 500px) {
   nav{
@@ -210,10 +218,14 @@ footer{
   background-color: #1d4ed8;
 }
 .formulario{
+  background: #ffffff69;
   max-width: 600px;
   margin: 2rem auto;
   display: grid;
   gap: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 1.5rem;
 }
 
 
