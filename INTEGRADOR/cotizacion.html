@@ -22,10 +22,46 @@
         </div>
     </header>
     <main>
-        <section class="formulario">
+        <section class="portada">
+            <h1>Contacto</h1>
+      <p>Contanos que diseño queres o pasanos tu diseño y lo imprimimos</p>
+        </section>    
+    </section class="formulario">
+
+      <form id="formulario-contacto" class="formulario" novalidate>
+        <div class="campo">
+          <label for="nombre">Nombre</label>
+          <input id="nombre" name="nombre" type="text" autocomplete="name" aria-describedby="error-nombre">
+          <p id="error-nombre" class="campo__error" role="alert"></p>
+        </div>
+
+        <div class="campo">
+          <label for="correo">Correo electrónico</label>
+          <input id="correo" name="correo" type="email" autocomplete="email" aria-describedby="error-correo">
+          <p id="error-correo" class="campo__error" role="alert"></p>
+        </div>
+
+        <div class="campo">
+          <label for="telefono">Teléfono</label>
+          <input id="telefono" name="telefono" type="tel" autocomplete="tel" placeholder="Ej: 2657 123456" aria-describedby="error-telefono">
+          <p id="error-telefono" class="campo__error" role="alert"></p>
+        </div>
+
+        <div class="campo">
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" rows="5" aria-describedby="error-mensaje"></textarea>
+          <p id="error-mensaje" class="campo__error" role="alert"></p>
+        </div>
+
+        <button class="boton" type="submit">Enviar consulta</button>
+      </form>
+
+      <aside id="resumen-envio" class="resumen" aria-live="polite" hidden></aside>
                 
         </section>
+
     </main>
+    <script src="cotizacion.js"></script>
 </body>
 
 </html>
