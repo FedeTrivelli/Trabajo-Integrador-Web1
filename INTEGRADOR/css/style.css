@@ -149,41 +149,12 @@ nav {
   border-radius: 50%;
   background-color: rgb(0,0,0,0.5);
   cursor: pointer;
-  transition: background .3s;
+  font-family: inherit;
+  font-size: 16px;
+}
 
-}
-.indicator.active,
-.indicator:active{
-  background-color: rgb(0, 0, 0);
-}
-/*footer*/
-footer{
-  background-color: var(--tinta);
-  color: white;
-  text-align: center;
-  padding: 1rem;
-}
-.pie-interno{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2rem 2rem;
-  max-width: 1900px;
-  margin: 0 auto;
-}
-/*Para celulares*/
-@media screen and (max-width: 500px) {
-  nav{
-    flex-direction: column;
-    padding: 1rem;
-  }
-  .nav-links{
-    flex-direction: column;
-    text-align: center;
-    margin-top: 1rem;
-    gap: 1rem;
-  }
-  
+.boton:hover {
+  background-color: #33c4d4;
 }
 
 /*cotizacion*/
@@ -217,7 +188,7 @@ footer{
   margin-bottom: 1.25rem;
 }
 
-.boton[hidden] {
+.button[hidden] {
   display: none;
 }
 
