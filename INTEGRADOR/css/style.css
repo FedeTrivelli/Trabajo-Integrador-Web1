@@ -6,7 +6,6 @@
   --azul: #2563eb;
   --Gris: #e2e8f0;
   --rosa: #f472b6;
-  --color-error: #a61e1e;
   --color-fondo: #0f172a;
   --color-superficie: #0f172a;
   --color-texto: #101036;
@@ -150,6 +149,7 @@ p {
 
 .campo {
   margin-bottom: 1.25rem;
+  color: white;
 }
 
 .campo label {
