@@ -52,7 +52,7 @@ nav {
   text-decoration: none;
   color: var(--fondo);
 }
-
+/*Portada*/
 #hero {
   padding-top: 2rem;
   min-height: 70vh;
@@ -67,7 +67,6 @@ nav {
   color: var(--linea);
   padding: 0 1rem;
 }
-/*Portada*/
 #hero h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
@@ -157,6 +156,36 @@ nav {
   background-color: #33c4d4;
 }
 
+/*pie de pagina*/
+footer{
+  background-color: var(--tinta);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+.pie-interno{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 2rem;
+  max-width: 1900px;
+  margin: 0 auto;
+}
+
+.portada{
+    padding-top: 2rem;
+  min-height: 20vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('contacto.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--linea);
+  padding: 0 1rem;
+}
 /*cotizacion*/
 .contacto {
   display: flex;
@@ -178,9 +207,6 @@ nav {
   border: 1px solid #ddd;
   border-radius: 12px;
   padding: 1.5rem;
-  background: var(--color-superficie);
-  border: 1px solid var(--color-borde);
-  border-radius: var(--radio);
 }
 
 
