@@ -9,6 +9,8 @@
   --linea: #cbd5e1;
   --texto-suave: #334155;
   --fuente: 'Ubuntu', sans-serif;
+  --error: #dc2626;
+  --exito: #16a34a;
 }
 
 * {
@@ -196,15 +198,16 @@ footer{
 .formulario-section {
   padding: 10rem 2rem;
   text-align: center;
-  background-color: #1d4ed8;
+  background-color: var(--azul);
 }
 .formulario{
-  background: #ffffff69;
+  color: white;
+  background: rgba(9, 9, 77, 0.884);
   max-width: 600px;
   margin: 2rem auto;
   display: grid;
   gap: 1rem;
-  border: 1px solid #ddd;
+  border: 1px solid white;
   border-radius: 12px;
   padding: 1.5rem;
 }
@@ -231,7 +234,7 @@ footer{
   border: 2px solid #ddd;
   border-radius: 5px;
   background: #fffdf9;
-  color: var(--color-texto);
+  color: black;
   font-family: var(--fuente-texto);
   font-size: 1rem;
 }
@@ -239,18 +242,18 @@ footer{
 .campo input:focus,
 .campo textarea:focus {
   outline: none;
-  border-color: var(--color-acento);
+  border-color: black;
 }
 
 .campo--invalido input,
 .campo--invalido textarea {
-  border-color: var(--color-error);
+  border-color: var(--error);
 }
 
 .campo__error {
   min-height: 1.2rem;
   margin: 0.3rem 0 0;
-  color: var(--color-error);
+  color: var(--error);
   font-size: 0.9rem;
   font-weight: 600;
 }
@@ -259,7 +262,7 @@ footer{
   flex: 1;
   padding: 1.5rem;
   background: #eef6ee;
-  border: 2px solid var(--color-exito);
+  border: var(--exito) 1px solid;
   border-radius: var(--radio);
 }
 
@@ -269,7 +272,7 @@ footer{
 
 .resumen__titulo {
   margin: 0 0 0.75rem;
-  color: var(--color-exito);
+  color: var(--exito);
 }
 
 .resumen__lista {
