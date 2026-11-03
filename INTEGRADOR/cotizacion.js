@@ -97,8 +97,8 @@ function validarCampo(campo) {
       const item = document.createElement("li");
       item.className = "resumen__item";
 
-      const etiqueta = document.createElement("strong");
-      etiqueta.textContent = `${campo.label}: `;
+    const etiqueta = document.createElement("strong");
+    etiqueta.textContent = `${campo.label}: `;
 
       const valor = document.createElement("span");
       valor.textContent = datos[campo.id] || "Sin archivo";
@@ -136,9 +136,9 @@ function validarCampo(campo) {
 
     mostrarResumen(datos);
 
-    cotizacion.reset();
-    camposDelFormulario.forEach((campo) => mostrarError(campo, ""));
-  });
+  cotizacion.reset();
+  camposDelFormulario.forEach((campo) => mostrarError(campo, ""));
+});
 
   camposDelFormulario.forEach((campo) => {
     const entrada = document.getElementById(campo.id);

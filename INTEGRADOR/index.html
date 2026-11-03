@@ -4,30 +4,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
+    <title>Inicio | Apolo 3D</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <header class="encapezado">
-        <div class="encabezado_interno">
-            <a class="logo" href="index.html">Apolo3D</a>
-            <nav aria-label="Menu de navegación">
-                <ul class="menu">
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="productos.html">Productos</a></li>
-                    <li><a href="cotizacion.html">Solicitar Cotización</a></li>
-                </ul>
-            </nav>
-        </div>
+    <header>
+        <nav>
+            <div class="logo"><a href="index.html"><img src="Imagenes/logo-apolo.png" alt="Apolo 3D, ir al inicio"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html">Producto</a></li>
+                <li><a href="cotizacion.html">Solicitar cotización</a></li>
+            </ul>
+        </nav>
     </header>
     <main>
-        <section class="portada">
+        <section id="hero">
             <h1>Tus ideas, impresas capa por capa</h1>
-            <p>Imprimimos prototipos, repuestos y piezas decorativas a medida. Vos traés la idea o el archivo STL, nosotros la hacemos real.</p>
-                <a href="cotizacion.html" class="boton">Pedir Presupuesto</a>
+            <p>Imprimimos prototipos, repuestos y piezas decorativas a medida. Vos traés la idea o el archivo STL,
+                nosotros la hacemos real.</p>
+            <a href="cotizacion.html" class="button">Solicitar cotización</a>
+        </section>
+
+        <section>
+            <div class="carousel-container">
+                <h3>Trabajos Recientes</h3>
+                <div class="carousel" id="carousel">
+                    <div class="carousel-items">
+                        <img src="Imagenes/producto1.jpg" alt="imagen carousel">
+                    </div>
+                    <div class="carousel-items">
+                        <img src="Imagenes/producto2.jpg" alt="imagen carousel">
+                    </div>
+                    <div class="carousel-items">
+                        <img src="Imagenes/producto3.jpg" alt="imagen carousel">
+                    </div>
+                    <div class="carousel-items">
+                        <img src="Imagenes/producto4.jpg" alt="imagen carousel">
+                    </div>
+                </div>
+                <button class="carousel-button carousel-button-back" id="backbtn">&#8249;</button>
+                <button class="carousel-button carousel-button-next" id="nextbtn">&#8250;</button>
+                <div class="content-indicator" id="indicator"></div>
+            </div>
+            <script src="js/script.js"></script>
         </section>
     </main>
+    <footer class="pie">
+        <div class="pie-interno">
+        <address style="font-style:normal">
+            <p>Tel. (42) 332-8700</p>
+            <p>info@apolo3d.com</p>
+        </address>
+        <p>© APOLO 3D 2026</p>
+        </div>
+    </footer>
 </body>
 
 </html>
