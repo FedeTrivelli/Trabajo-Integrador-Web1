@@ -39,10 +39,10 @@ function validarMensaje(valor) {
 }
 
 const camposDelFormulario = [
-  { id: "nombre", label: "Nombre", validar: validarNombre },
-  { id: "correo", label: "Correo electrónico", validar: validarCorreo },
-  { id: "telefono", label: "Teléfono", validar: validarTelefono },
-  { id: "mensaje", label: "Mensaje", validar: validarMensaje }
+  { id: "nombre", etiqueta: "Nombre", validar: validarNombre },
+  { id: "correo", etiqueta: "Correo electrónico", validar: validarCorreo },
+  { id: "telefono", etiqueta: "Teléfono", validar: validarTelefono },
+  { id: "mensaje", etiqueta: "Mensaje", validar: validarMensaje }
 ];
 
 function limpiarEspacios(texto) {
@@ -84,7 +84,7 @@ function mostrarResumen(datos) {
     item.className = "resumen__item";
 
     const etiqueta = document.createElement("strong");
-    etiqueta.textContent = `${campo.label}: `;
+    etiqueta.textContent = `${campo.etiqueta}: `;
 
     const valor = document.createElement("span");
     valor.textContent = datos[campo.id];
@@ -119,7 +119,7 @@ cotizacion.addEventListener("submit", (evento) => {
 
   mostrarResumen(datos);
 
-  cotizacion.reset();
+  formulario.reset();
   camposDelFormulario.forEach((campo) => mostrarError(campo, ""));
 });
 

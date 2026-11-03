@@ -1,22 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
 :root {
-  --blanco: #faf5f7;
-  --azulOscuro: #0f172a;
+  --fondo: #f1f5f9;
+  --tinta: #0f172a;
   --azul: #2563eb;
-  --Gris: #e2e8f0;
-  --rosa: #f472b6;
-  --color-fondo: #0f172a;
-  --color-superficie: #0f172a;
-  --color-texto: #101036;
-  --color-texto-suave: #000000;
-  --color-acento: #2563eb;
-  --color-borde: #0f172a;
-  --color-error: #a61e1e;
-  --color-exito: #2e6b3a;
+  --azul-oscuro: #1d4ed8;
+  --tarjeta: #e2e8f0;
+  --linea: #cbd5e1;
+  --texto-suave: #334155;
   --fuente: 'Ubuntu', sans-serif;
-  --radio: 10px;
-
 }
 
 * {
@@ -26,130 +18,219 @@
   font-family: var(--fuente);
 }
 
-a {
-  text-decoration: none;
-  color: var(--blanco);
-}
-
-img {
-  max-width: 100%;
-  display: block;
-}
-
 body {
-  font-family: var(--fuente);
-  background-color: var(--Gris);
-  color: var(--azulOscuro);
+  line-height: 1.6;
+}
+/*Cabezera*/
+header {
+  box-shadow: 0 2px 5px var(--linea);
+  background-color: var(--tinta);
 }
 
-/* Encabezado */
-.encabezado {
-  background-color: var(--azulOscuro);
-  color: var(--blanco);
-}
-
-.encabezado_interno {
-  background-color: var(--azulOscuro);
-  color: var(--blanco);
-  padding: 0 80px;
+nav {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  height: 80px;
+  align-items: center;
+  padding: 1rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #0f172a;
 }
 
-.logo {
-  font-size: 33px;
-  color: var(--blanco);
-  font-weight: 700;
+.logo img{
+  height: 68px;
+  width: auto;
 }
 
-.menu {
+.nav-links {
   display: flex;
   list-style: none;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--fondo);
+}
+
+#hero {
+  padding-top: 2rem;
+  min-height: 70vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('portada.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--linea);
+  padding: 0 1rem;
+}
+/*Portada*/
+#hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+.button {
+  background-color: #1d4ed8;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-top: 2rem;
+  text-decoration: none;
+}
+.button:hover {
+  background-color: #1d74d8;
+}
+
+/*carousel*/
+.carousel-container{
+  position: relative;
+  max-width: 600px;
+  margin: 20px  auto;
+  overflow: hidden;
+}
+.carousel-container h3{
+  text-align: center;
+  font-size: 3rem;
+  color: var(--tinta);
+  padding: 2rem;
+}
+.carousel{
+  display: flex;
+  transition: transform .5s ease-in-out;
+}
+.carousel-items{
+  min-width: 100%;
+  position: relative;
+}
+.carousel-items img{
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  display: block;
+}
+.carousel-button{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: #000;
+  padding: 16px;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background .3s;
+  z-index: 10;
+}
+.carousel-button:hover{
+  background: rgba(0, 0, 0, 0.8);
+}
+.carousel-button-back{
+  left: 10px;
+}
+.carousel-button-next{
+  right: 10px;
+}
+.content-indicator{
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
   gap: 10px;
 }
-
-.menu a {
-  display: block;
-  padding: 10px 15px;
-  color: var(--blanco);
-  text-decoration: none;
-  border-bottom: 3px solid transparent;
-}
-
-.menu a:hover {
-  border-bottom: 3px solid var(--azul);
-}
-
-.menu a[aria-current="page"] {
-  background-color: var(--blanco);
-  color: var(--azulOscuro);
-  font-weight: 700;
-  border-color: var(--azul);
-}
-
-main {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 50px;
-}
-
-h1 {
-  font-size: 50px;
-  line-height: 1.2;
-  margin-bottom: 20px;
-}
-
-p {
-  max-width: 800px;
-  margin-bottom: 20px;
-}
-
-/* Portada */
-.portada {
-  padding: 50px 25px;
-  border-radius: 25px;
-  color: var(--blanco);
-  background: linear-gradient(70deg, var(--azulOscuro) 0%, var(--azul) 100%);
-}
-
-.boton {
-  display: inline-block;
-  color: var(--blanco);
-  background-color: var(--azul);
-  font-weight: 700;
-  border: 0;
-  padding: 10px 20px;
-  border-radius: 22px;
-  text-decoration: none;
+.indicator{
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgb(0,0,0,0.5);
   cursor: pointer;
-  font-family: inherit;
-  font-size: 16px;
-}
+  transition: background .3s;
 
-.boton:hover {
-  background-color: #33c4d4;
+}
+.indicator.active,
+.indicator:active{
+  background-color: rgb(0, 0, 0);
+}
+/*footer*/
+footer{
+  background-color: var(--tinta);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+.pie-interno{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 2rem;
+  max-width: 1900px;
+  margin: 0 auto;
+}
+/*Para celulares*/
+@media screen and (max-width: 500px) {
+  nav{
+    flex-direction: column;
+    padding: 1rem;
+  }
+  .nav-links{
+    flex-direction: column;
+    text-align: center;
+    margin-top: 1rem;
+    gap: 1rem;
+  }
+  
 }
 
 /*cotizacion*/
+.portada{
+  padding-top: 1rem;
+  min-height: 20vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("contacto.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--linea);
+  padding: 0 1rem;
+}
+.portada h1{
+  font-size: 50px;
+  padding: 1rem;
+}
+
 .contacto {
   display: flex;
   align-items: flex-start;
   gap: 2rem;
 }
 
-.formulario {
-  flex: 1;
-  padding: 1.5rem;
-  background: var(--color-superficie);
-  border: 1px solid var(--color-borde);
-  border-radius: var(--radio);
+.formulario-section {
+  padding: 10rem 2rem;
+  text-align: center;
+  background-color: #1d4ed8;
 }
+.formulario{
+  background: #ffffff69;
+  max-width: 600px;
+  margin: 2rem auto;
+  display: grid;
+  gap: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
 
 .campo {
   margin-bottom: 1.25rem;
-  color: white;
 }
 
 .campo label {
@@ -162,8 +243,8 @@ p {
 .campo textarea {
   width: 100%;
   padding: 0.65rem 0.8rem;
-  border: 2px solid var(--color-borde);
-  border-radius: var(--radio);
+  border: 2px solid #ddd;
+  border-radius: 5px;
   background: #fffdf9;
   color: var(--color-texto);
   font-family: var(--fuente-texto);
