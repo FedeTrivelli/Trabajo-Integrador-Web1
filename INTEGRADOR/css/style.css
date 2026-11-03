@@ -126,6 +126,7 @@ p {
   cursor: pointer;
   font-family: inherit;
   font-size: 16px;
+  margin-top: 10px;
 }
 
 .boton:hover {
@@ -133,6 +134,13 @@ p {
 }
 
 /*cotizacion*/
+.form-portada {
+  padding: 50px 25px;
+  color: var(--blanco);
+  background: linear-gradient(360deg, var(--azulOscuro) 30%, var(--azul) 100%);
+  border-radius: 25px 25px 0 0;
+}
+
 .contacto {
   display: flex;
   align-items: flex-start;
@@ -142,14 +150,18 @@ p {
 .formulario {
   flex: 1;
   padding: 1.5rem;
-  background: var(--color-superficie);
+  background: var(--azulOscuro);
   border: 1px solid var(--color-borde);
-  border-radius: var(--radio);
+  border-radius: 0 0 25px 25px;
 }
 
 .campo {
   margin-bottom: 1.25rem;
   color: white;
+}
+
+.boton[hidden] {
+  display: none;
 }
 
 .campo label {

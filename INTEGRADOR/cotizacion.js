@@ -1,5 +1,7 @@
 const cotizacion = document.getElementById("formulario-contacto");
 const contenedorResumen = document.getElementById("resumen-envio");
+const entradaArchivo = document.getElementById("archivo");
+const botonEliminarArchivo = document.getElementById("eliminar-archivo");
 
 const regexCorreo = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
 
@@ -8,6 +10,8 @@ const regexNombre = /^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ' ]+$/;
 
 const LONGITUD_NOMBRE = { minimo: 3, maximo: 40 };
 const LONGITUD_MENSAJE = { minimo: 10, maximo: 300 };
+
+const MAX_TAMANO_ARCHIVO = 2 * 1024 * 1024;
 
 function validarNombre(valor) {
   if (valor === "") return "El nombre es obligatorio.";
@@ -31,6 +35,12 @@ function validarTelefono(valor) {
   return "";
 }
 
+function validarArchivo(archivo) {
+  if (!archivo) return "";
+  if (archivo.size > MAX_TAMANO_ARCHIVO) return "El archivo no puede superar los 2 MB.";
+  return "";
+}
+
 function validarMensaje(valor) {
   if (valor === "") return "El mensaje es obligatorio.";
   if (valor.length < LONGITUD_MENSAJE.minimo) return `El mensaje debe tener al menos ${LONGITUD_MENSAJE.minimo} caracteres.`;
@@ -42,7 +52,8 @@ const camposDelFormulario = [
   { id: "nombre", label: "Nombre", validar: validarNombre },
   { id: "correo", label: "Correo electrónico", validar: validarCorreo },
   { id: "telefono", label: "Teléfono", validar: validarTelefono },
-  { id: "mensaje", label: "Mensaje", validar: validarMensaje }
+  { id: "mensaje", label: "Mensaje", validar: validarMensaje },
+  { id: "archivo", label: "Archivo", validar: validarArchivo }
 ];
 
 function limpiarEspacios(texto) {
@@ -59,70 +70,87 @@ function mostrarError(campo, textoError) {
 
 function validarCampo(campo) {
   const entrada = document.getElementById(campo.id);
-  const valorLimpio = limpiarEspacios(entrada.value);
-  entrada.value = valorLimpio;
-  const textoError = campo.validar(valorLimpio);
+  const valor = entrada.type === "file"
+    ? entrada.files[0] || null
+    : limpiarEspacios(entrada.value);
+
+  if (entrada.type !== "file") entrada.value = valor;
+  const textoError = campo.validar(valor);
   mostrarError(campo, textoError);
   return textoError === "";
 }
 
-function mostrarResumen(datos) {
-  contenedorResumen.replaceChildren();
+  function mostrarResumen(datos) {
+    contenedorResumen.replaceChildren();
 
-  const titulo = document.createElement("h2");
-  titulo.className = "resumen__titulo";
-  titulo.textContent = "¡Gracias por escribirnos!";
+    const titulo = document.createElement("h2");
+    titulo.className = "resumen__titulo";
+    titulo.textContent = "¡Gracias por escribirnos!";
 
-  const subtitulo = document.createElement("p");
-  subtitulo.textContent = "Recibimos tu consulta con estos datos:";
+    const subtitulo = document.createElement("p");
+    subtitulo.textContent = "Recibimos tu consulta con estos datos:";
 
-  const lista = document.createElement("ul");
-  lista.className = "resumen__lista";
+    const lista = document.createElement("ul");
+    lista.className = "resumen__lista";
 
-  camposDelFormulario.forEach((campo) => {
-    const item = document.createElement("li");
-    item.className = "resumen__item";
+    camposDelFormulario.forEach((campo) => {
+      const item = document.createElement("li");
+      item.className = "resumen__item";
 
-    const etiqueta = document.createElement("strong");
-    etiqueta.textContent = `${campo.label}: `;
+      const etiqueta = document.createElement("strong");
+      etiqueta.textContent = `${campo.label}: `;
 
-    const valor = document.createElement("span");
-    valor.textContent = datos[campo.id];
+      const valor = document.createElement("span");
+      valor.textContent = datos[campo.id] || "Sin archivo";
 
-    item.append(etiqueta, valor);
-    lista.appendChild(item);
-  });
+      item.append(etiqueta, valor);
+      lista.appendChild(item);
+    });
 
-  contenedorResumen.append(titulo, subtitulo, lista);
-  contenedorResumen.hidden = false;
-}
-
-cotizacion.addEventListener("submit", (evento) => {
-  evento.preventDefault();
-
-  let todoValido = true;
-  camposDelFormulario.forEach((campo) => {
-    if (!validarCampo(campo)) todoValido = false;
-  });
-
-  if (!todoValido) {
-    contenedorResumen.hidden = true;
-    const primerInvalido = formulario.querySelector(".campo--invalido input, .campo--invalido textarea");
-    if (primerInvalido) primerInvalido.focus();
-    return;
+    contenedorResumen.append(titulo, subtitulo, lista);
+    contenedorResumen.hidden = false;
   }
 
-  const datos = {};
-  camposDelFormulario.forEach((campo) => {
-    datos[campo.id] = document.getElementById(campo.id).value;
+  cotizacion.addEventListener("submit", (evento) => {
+    evento.preventDefault();
+
+    let todoValido = true;
+    camposDelFormulario.forEach((campo) => {
+      if (!validarCampo(campo)) todoValido = false;
+    });
+
+    if (!todoValido) {
+      contenedorResumen.hidden = true;
+      const primerInvalido = cotizacion.querySelector(".campo--invalido input, .campo--invalido textarea");
+      if (primerInvalido) primerInvalido.focus();
+      return;
+    }
+
+    const datos = {};
+    camposDelFormulario.forEach((campo) => {
+      const entrada = document.getElementById(campo.id);
+      datos[campo.id] = entrada.type === "file"
+        ? entrada.files[0]?.name || ""
+        : entrada.value;
+    });
+
+    mostrarResumen(datos);
+
+    cotizacion.reset();
+    camposDelFormulario.forEach((campo) => mostrarError(campo, ""));
   });
 
-  mostrarResumen(datos);
+  camposDelFormulario.forEach((campo) => {
+    const entrada = document.getElementById(campo.id);
+    entrada.addEventListener(entrada.type === "file" ? "change" : "blur", () => {
+      if (entrada.type === "file") botonEliminarArchivo.hidden = entrada.files.length === 0;
+      validarCampo(campo);
+    });
+  });
 
-  cotizacion.reset();
-  camposDelFormulario.forEach((campo) => mostrarError(campo, ""));
-});
-
-camposDelFormulario.forEach((campo) => {
-  document.getElementById(campo.id).addEventListener("blur", () => validarCampo(campo));
-});
+  botonEliminarArchivo.addEventListener("click", () => {
+    entradaArchivo.value = "";
+    botonEliminarArchivo.hidden = true;
+    validarCampo(camposDelFormulario.find((campo) => campo.id === "archivo"));
+    entradaArchivo.focus();
+  });
