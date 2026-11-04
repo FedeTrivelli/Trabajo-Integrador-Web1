@@ -70,9 +70,12 @@ function mostrarError(campo, textoError) {
 
 function validarCampo(campo) {
   const entrada = document.getElementById(campo.id);
-  const valor = entrada.type === "file"
-    ? entrada.files[0] || null
-    : limpiarEspacios(entrada.value);
+  let valor;
+  if (entrada.type === "file") {
+    valor = entrada.files[0] || null;
+  } else {
+    valor = limpiarEspacios(entrada.value);
+  }
 
   if (entrada.type !== "file") entrada.value = valor;
   const textoError = campo.validar(valor);
@@ -126,15 +129,18 @@ cotizacion.addEventListener("submit", (evento) => {
     return;
   }
 
-  if (entrada.type === "file") {
-    datos[campo.id] = entrada.files[0]?.name || "";
-  } else {
-    datos[campo.id] = entrada.value;
-  }
+  const datos = {};
+  camposDelFormulario.forEach((campo) => {
+    const entrada = document.getElementById(campo.id);
+    datos[campo.id] = entrada.type === "file"
+      ? entrada.files[0]?.name || ""
+      : entrada.value;
+  });
 
   mostrarResumen(datos);
 
   cotizacion.reset();
+  botonEliminarArchivo.hidden = true;
   camposDelFormulario.forEach((campo) => mostrarError(campo, ""));
 });
 
