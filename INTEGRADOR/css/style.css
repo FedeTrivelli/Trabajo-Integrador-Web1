@@ -347,7 +347,7 @@ footer {
     border-radius: 5px;
     background: #fffdf9;
     color: black;
-    font-family: var(--fuente-texto);
+    font-family: var(--fuente);
     font-size: 1rem;
   }
 
