@@ -101,11 +101,10 @@ nav {
   overflow: hidden;
 }
 
-.carousel-container h3 {
+.carousel-container h2 {
   text-align: center;
-  font-size: clamp(1.75rem, 6vw, 3rem);
-  color: var(--tinta);
-  padding: clamp(1rem, 4vw, 2rem);
+  margin: 2rem;
+  font-size: 3rem;
 }
 
 .carousel {
