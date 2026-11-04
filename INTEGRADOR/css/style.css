@@ -243,6 +243,7 @@ footer {
     flex-direction: column;
     padding: 1rem;
   }
+}
 
   .portada {
     padding-top: 2rem;
@@ -362,4 +363,3 @@ footer {
   .resumen__item:last-child {
     border-bottom: none;
   }
-}
