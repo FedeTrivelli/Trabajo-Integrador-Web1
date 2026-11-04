@@ -2,38 +2,58 @@ const carousel = document.getElementById('carousel')
 const backbtn = document.getElementById('backbtn')
 const nextbtn = document.getElementById('nextbtn')
 const indicators = document.getElementById('indicator')
+const slides = [
+    { src: 'Imagenes/producto1.jpg', alt: 'Trabajo reciente 1', descripcion: 'Engranaje' },
+    { src: 'Imagenes/producto2.jpg', alt: 'Trabajo reciente 2', descripcion:'Maceta' },
+    { src: 'Imagenes/producto3.jpg', alt: 'Trabajo reciente 3', descripcion:'Jarron' },
+    { src: 'Imagenes/producto4.jpg', alt: 'Trabajo reciente 4', descripcion:'Soporte para celular' }
+]
 
-let currentIdex = 0
-const item = document.querySelectorAll('.carousel-items')
-const totalitems = item.length
+let currentIndex = 0
+const totalitems = slides.length
 
-for(let i = 0; i < totalitems; i++){
-    const  dot = document.createElement('div')
+slides.forEach((slide, i) => {
+    const item = document.createElement('div')
+    item.classList.add('carousel-items')
+
+    const img = document.createElement('img')
+    img.src = slide.src
+    img.alt = slide.alt
+
+    const texto = document.createElement('p')
+    texto.classList.add('carousel-texto')
+    texto.textContent = slide.descripcion
+
+    item.appendChild(img)
+    item.appendChild(texto)
+    carousel.appendChild(item)
+
+    const dot = document.createElement('div')
     dot.classList.add('indicator')
-    if(i == 0)
-        dot.classList.add('active')
+    if (i === 0) dot.classList.add('active')
     dot.addEventListener('click', () => goToslide(i))
     indicators.appendChild(dot)
-}
-function updateIndicator(){
+})
+
+function updateIndicator() {
     document.querySelectorAll('.indicator').forEach((indicator, index) => {
-        indicator.classList.toggle('active', index == currentIdex)
+        indicator.classList.toggle('active', index === currentIndex)
     })
 }
 
-function goToslide(index){
-    currentIdex = index
-    carousel.style.transform = `translateX(-${currentIdex * 100}%)`
+function goToslide(index) {
+    currentIndex = index
+    carousel.style.transform = `translateX(-${currentIndex * 100}%)`
     updateIndicator()
 }
 
-function nextSlide(){
-    currentIdex = (currentIdex + 1 ) % totalitems
-    goToslide(currentIdex)
+function nextSlide() {
+    goToslide((currentIndex + 1) % totalitems)
 }
-function backSlide(){
-    currentIdex = (currentIdex - 1 + totalitems) % totalitems
-    goToslide(currentIdex)
+
+function backSlide() {
+    goToslide((currentIndex - 1 + totalitems) % totalitems)
 }
+
 nextbtn.addEventListener('click', nextSlide)
 backbtn.addEventListener('click', backSlide)
