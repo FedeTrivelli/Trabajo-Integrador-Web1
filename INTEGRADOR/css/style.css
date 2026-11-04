@@ -363,3 +363,22 @@ footer {
   .resumen__item:last-child {
     border-bottom: none;
   }
+
+  .productos-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+ 
+  }
+
+  .productos {
+    padding: 3rem;
+    border: 10px solid var(--tinta);
+    border-radius: 10px;
+  }
+  .producto {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
