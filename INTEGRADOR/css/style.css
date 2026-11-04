@@ -74,7 +74,7 @@ nav {
   margin-bottom: 1rem;
 }
 .button {
-  background-color: #1d4ed8;
+  background-color: var(--azul);
   color: white;
   border: none;
   padding: 1rem 2rem;
@@ -202,7 +202,7 @@ footer{
 }
 .formulario{
   color: white;
-  background: rgba(9, 9, 77, 0.884);
+  background: var(--tinta);
   max-width: 600px;
   margin: 2rem auto;
   display: grid;
