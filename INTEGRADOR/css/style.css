@@ -5,7 +5,7 @@
   --tinta: #0f172a;
   --azul: #2563eb;
   --azul-oscuro: #1d4ed8;
-  --tarjeta: #e2e8f0;
+  --tarjeta: #acacac8e;
   --linea: #cbd5e1;
   --texto-suave: #334155;
   --fuente: 'Ubuntu', sans-serif;
@@ -157,6 +157,41 @@ nav {
 .boton:hover {
   background-color: #33c4d4;
 }
+.columnas {
+  display: flex;
+  gap: 1.4rem;
+  flex-wrap: wrap
+}
+
+.tarjeta {
+  flex: 1 1 280px;
+  background: var(--tarjeta);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column
+}
+
+.tarjeta-icono {
+  width: 58px;
+  height: 58px;
+  background: #cbd5e1;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem
+}
+
+.tarjeta-icono svg {
+  width: 30px;
+  height: 30px;
+  stroke: var(--tinta);
+  fill: none;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round
+}
 
 /*pie de pagina*/
 footer{
@@ -173,6 +208,11 @@ footer{
   max-width: 1900px;
   margin: 0 auto;
 }
+@media screen and (max-width: 500px) {
+  nav{
+    flex-direction: column;
+    padding: 1rem;
+  }
 
 .portada{
     padding-top: 2rem;
